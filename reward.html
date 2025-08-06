@@ -1,0 +1,350 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Kumpulkan Poin Literasi Keluarga - Tukar Hadiah Menarik
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+  <header class="bg-white shadow-md">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <div class="flex items-center space-x-3">
+     <img alt="Ikon keluarga dengan bintang berwarna kuning cerah melambangkan poin literasi keluarga" class="w-10 h-10" height="40" src="https://storage.googleapis.com/a1aa/image/05f07fa5-7374-4fb6-5e64-9d6912490167.jpg" width="40"/>
+     <h1 class="text-xl font-semibold">
+      Poin Literasi Keluarga
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-gray-700 font-medium">
+     <a class="hover:text-yellow-500 transition" href="#cara-kerja">
+      Cara Kerja
+     </a>
+     <a class="hover:text-yellow-500 transition" href="#poin-total">
+      Total Poin
+     </a>
+     <a class="hover:text-yellow-500 transition" href="#hadiah">
+      Hadiah
+     </a>
+     <a class="hover:text-yellow-500 transition" href="#aktivitas">
+      Aktivitas
+     </a>
+     <a class="hover:text-yellow-500 transition" href="#kontak">
+      Kontak
+     </a>
+    </nav>
+    <button aria-label="Toggle menu" class="md:hidden focus:outline-none focus:ring-2 focus:ring-yellow-400" id="menu-btn">
+     <i class="fas fa-bars text-2xl text-gray-700">
+     </i>
+    </button>
+   </div>
+   <nav aria-label="Mobile menu" class="md:hidden bg-white border-t border-gray-200 hidden" id="mobile-menu">
+    <a class="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-600 font-medium" href="#cara-kerja">
+     Cara Kerja
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-600 font-medium" href="#poin-total">
+     Total Poin
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-600 font-medium" href="#hadiah">
+     Hadiah
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-600 font-medium" href="#aktivitas">
+     Aktivitas
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-600 font-medium" href="#kontak">
+     Kontak
+    </a>
+   </nav>
+  </header>
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+   <section class="mb-16" id="cara-kerja">
+    <h2 class="text-3xl font-bold text-yellow-600 mb-6 text-center">
+     Cara Kerja
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+      <img alt="Foto nyata keluarga sedang duduk bersama di ruang keluarga yang hangat sambil mendengarkan cerita" class="mb-4 rounded-full object-cover" height="120" src="mendengar.jpg" width="120"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Mendengarkan Cerita
+      </h3>
+      <p class="text-gray-600">
+       Keluarga mendengarkan cerita bersama dan mendapatkan poin literasi.
+      </p>
+     </div>
+     <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+      <img alt="Foto nyata keluarga membaca buku bersama di ruang tamu dengan pencahayaan alami" class="mb-4 rounded-full object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/fa8010f9-2dc9-4c05-84cd-ec73e2a8e96b.jpg" width="120"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Membaca Teks Cerita
+      </h3>
+      <p class="text-gray-600">
+       Setiap kali selesai membaca teks cerita, poin literasi keluarga bertambah.
+      </p>
+     </div>
+     <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center">
+      <img alt="Foto nyata anak-anak melihat visual cerita di tablet dengan ekspresi senang di ruang keluarga" class="mb-4 rounded-full object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/29fc9255-1444-4501-89c8-968b597aae4e.jpg" width="120"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Melihat Visual Cerita
+      </h3>
+      <p class="text-gray-600">
+       Visual cerita yang menarik juga menambah poin literasi keluarga.
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="mb-16 bg-white rounded-lg shadow-lg p-8 max-w-3xl mx-auto" id="poin-total">
+    <h2 class="text-3xl font-bold text-yellow-600 mb-6 text-center">
+     Total Poin Literasi Keluarga
+    </h2>
+    <div class="flex flex-col items-center space-y-4">
+     <div class="text-yellow-500 text-6xl font-extrabold flex items-center">
+      <i class="fas fa-star mr-4">
+      </i>
+      <span id="total-points">
+       60
+      </span>
+     </div>
+     <p class="text-gray-700 text-center max-w-md">
+      Ini adalah total poin yang telah dikumpulkan keluarga Anda dari berbagai aktivitas literasi seperti mendengarkan cerita, membaca teks, dan melihat visual cerita. Tukarkan poin ini dengan hadiah menarik di bawah.
+     </p>
+    </div>
+   </section>
+   <section class="mb-16" id="hadiah">
+    <h2 class="text-3xl font-bold text-yellow-600 mb-8 text-center">
+     Hadiah yang Bisa Ditukar
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+     <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center">
+      <img alt="Foto nyata voucher buku digital dengan desain modern dan warna cerah" class="mb-4 rounded-lg w-40 h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/72e055d9-33f2-4e9e-00f0-f6d0763d0eeb.jpg" width="200"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Voucher Buku
+      </h3>
+      <p class="text-gray-700 text-center">
+       Gunakan voucher ini untuk membeli buku digital favorit keluarga.
+      </p>
+      <div class="mt-3 text-yellow-500 text-2xl font-bold flex items-center">
+       <i class="fas fa-star mr-2">
+       </i>
+       100 Poin
+      </div>
+      <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded-md transition exchange-btn" data-cost="100" data-name="Voucher Buku" disabled="">
+       Tukar Sekarang
+      </button>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center">
+      <img alt="Foto nyata kartu kuota internet dengan ikon sinyal dan perangkat digital" class="mb-4 rounded-lg w-40 h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/ec3b9166-8687-44e1-5ce6-410e31a7e144.jpg" width="200"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Kuota Internet
+      </h3>
+      <p class="text-gray-700 text-center">
+       Dapatkan kuota internet untuk mendukung aktivitas belajar dan membaca online.
+      </p>
+      <div class="mt-3 text-yellow-500 text-2xl font-bold flex items-center">
+       <i class="fas fa-star mr-2">
+       </i>
+       150 Poin
+      </div>
+      <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded-md transition exchange-btn" data-cost="150" data-name="Kuota Internet" disabled="">
+       Tukar Sekarang
+      </button>
+     </div>
+     <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center">
+      <img alt="Foto nyata merchandise komunitas berupa kaos, stiker, dan tote bag dengan desain keren dan warna cerah" class="mb-4 rounded-lg w-40 h-40 object-cover" height="200" src="https://storage.googleapis.com/a1aa/image/085ac96c-7fae-4c8a-29ff-68fbb17ede16.jpg" width="200"/>
+      <h3 class="text-xl font-semibold mb-2">
+       Merchandise Komunitas
+      </h3>
+      <p class="text-gray-700 text-center">
+       Dapatkan merchandise eksklusif seperti kaos, stiker, dan tote bag untuk keluarga.
+      </p>
+      <div class="mt-3 text-yellow-500 text-2xl font-bold flex items-center">
+       <i class="fas fa-star mr-2">
+       </i>
+       200 Poin
+      </div>
+      <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded-md transition exchange-btn" data-cost="200" data-name="Merchandise Komunitas" disabled="">
+       Tukar Sekarang
+      </button>
+     </div>
+    </div>
+   </section>
+   <section class="mb-16" id="aktivitas">
+    <h2 class="text-3xl font-bold text-yellow-600 mb-8 text-center">
+     Aktivitas Literasi Keluarga
+    </h2>
+    <div class="space-y-6 max-w-4xl mx-auto">
+     <article class="bg-white rounded-lg shadow-md p-6 flex items-center space-x-6">
+      <img alt="Foto nyata keluarga sedang duduk bersama di ruang keluarga yang hangat sambil mendengarkan cerita" class="w-24 h-24 rounded-lg object-cover flex-shrink-0" height="100" src="https://storage.googleapis.com/a1aa/image/c9ddbf1d-00da-4031-15bc-7d59508ff07a.jpg" width="100"/>
+      <div>
+       <h3 class="text-lg font-semibold text-yellow-600">
+        Mendengarkan Cerita
+       </h3>
+       <p class="text-gray-700">
+        Keluarga mendengarkan cerita bersama dan mendapatkan poin literasi.
+       </p>
+      </div>
+      <div class="ml-auto text-yellow-500 text-2xl font-bold flex items-center">
+       <i class="fas fa-star mr-1">
+       </i>
+       20
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md p-6 flex items-center space-x-6">
+      <img alt="Foto nyata keluarga membaca buku bersama di ruang tamu dengan pencahayaan alami" class="w-24 h-24 rounded-lg object-cover flex-shrink-0" height="100" src="https://storage.googleapis.com/a1aa/image/fa8010f9-2dc9-4c05-84cd-ec73e2a8e96b.jpg" width="100"/>
+      <div>
+       <h3 class="text-lg font-semibold text-yellow-600">
+        Membaca Teks Cerita
+       </h3>
+       <p class="text-gray-700">
+        Setiap kali selesai membaca teks cerita, poin literasi keluarga bertambah.
+       </p>
+      </div>
+      <div class="ml-auto text-yellow-500 text-2xl font-bold flex items-center">
+       <i class="fas fa-star mr-1">
+       </i>
+       25
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md p-6 flex items-center space-x-6">
+      <img alt="Foto nyata anak-anak melihat visual cerita di tablet dengan ekspresi senang di ruang keluarga" class="w-24 h-24 rounded-lg object-cover flex-shrink-0" height="100" src="https://storage.googleapis.com/a1aa/image/29fc9255-1444-4501-89c8-968b597aae4e.jpg" width="100"/>
+      <div>
+       <h3 class="text-lg font-semibold text-yellow-600">
+        Melihat Visual Cerita
+       </h3>
+       <p class="text-gray-700">
+        Visual cerita yang menarik juga menambah poin literasi keluarga.
+       </p>
+      </div>
+      <div class="ml-auto text-yellow-500 text-2xl font-bold flex items-center">
+       <i class="fas fa-star mr-1">
+       </i>
+       15
+      </div>
+     </article>
+    </div>
+   </section>
+   <section class="mb-16 max-w-3xl mx-auto" id="kontak">
+    <h2 class="text-3xl font-bold text-yellow-600 mb-8 text-center">
+     Kontak Kami
+    </h2>
+    <form action="#" class="bg-white rounded-lg shadow-md p-8 space-y-6" method="POST">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="nama">
+       Nama
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" id="nama" name="nama" placeholder="Masukkan nama Anda" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="email">
+       Email
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" id="email" name="email" placeholder="Masukkan email Anda" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="pesan">
+       Pesan
+      </label>
+      <textarea class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" id="pesan" name="pesan" placeholder="Tulis pesan Anda di sini" required="" rows="4"></textarea>
+     </div>
+     <button class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 rounded-md transition" type="submit">
+      Kirim Pesan
+     </button>
+    </form>
+   </section>
+  </main>
+  <footer class="bg-white border-t border-gray-200 py-6">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 text-sm">
+    © 2024 Poin Literasi Keluarga. Semua hak cipta dilindungi.
+   </div>
+  </footer>
+  <!-- Popup Modal -->
+  <div aria-describedby="popup-desc" aria-hidden="true" aria-labelledby="popup-title" aria-modal="true" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden" id="popup-modal" role="dialog">
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 mx-4">
+    <h3 class="text-xl font-semibold text-green-600 mb-4" id="popup-title">
+     Tukar Hadiah Berhasil!
+    </h3>
+    <p class="text-gray-700 mb-6" id="popup-desc">
+     Terima kasih telah menukarkan poin Anda. Hadiah akan segera diproses.
+    </p>
+    <button aria-label="Tutup popup" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-md w-full transition" id="close-popup">
+     Tutup
+    </button>
+   </div>
+  </div>
+  <script>
+   const menuBtn = document.getElementById('menu-btn');
+   const mobileMenu = document.getElementById('mobile-menu');
+   menuBtn.addEventListener('click', () => {
+     mobileMenu.classList.toggle('hidden');
+   });
+
+   // Initial total points
+   let totalPoints = 2660;
+   const totalPointsEl = document.getElementById('total-points');
+   totalPointsEl.textContent = totalPoints.toLocaleString();
+
+   // Popup elements
+   const popupModal = document.getElementById('popup-modal');
+   const closePopupBtn = document.getElementById('close-popup');
+
+   // Show popup function
+   function showPopup() {
+     popupModal.classList.remove('hidden');
+     popupModal.setAttribute('aria-hidden', 'false');
+   }
+
+   // Hide popup function
+   function hidePopup() {
+     popupModal.classList.add('hidden');
+     popupModal.setAttribute('aria-hidden', 'true');
+   }
+
+   closePopupBtn.addEventListener('click', hidePopup);
+
+   // Handle exchange button clicks
+   const exchangeButtons = document.querySelectorAll('.exchange-btn');
+   function updateButtons() {
+     exchangeButtons.forEach(button => {
+       const cost = parseInt(button.getAttribute('data-cost'), 10);
+       if (totalPoints >= cost) {
+         button.disabled = false;
+         button.classList.remove('opacity-50', 'cursor-not-allowed');
+       } else {
+         button.disabled = true;
+         button.classList.add('opacity-50', 'cursor-not-allowed');
+       }
+     });
+   }
+   updateButtons();
+
+   exchangeButtons.forEach(button => {
+     button.addEventListener('click', () => {
+       const cost = parseInt(button.getAttribute('data-cost'), 10);
+       const name = button.getAttribute('data-name');
+
+       if (totalPoints >= cost) {
+         totalPoints -= cost;
+         totalPointsEl.textContent = totalPoints.toLocaleString();
+         updateButtons();
+         showPopup();
+       } else {
+         alert('Maaf, poin Anda tidak cukup untuk menukar ' + name + '.');
+       }
+     });
+   });
+
+   // Accessibility: close popup on Escape key
+   document.addEventListener('keydown', (e) => {
+     if (e.key === 'Escape' && !popupModal.classList.contains('hidden')) {
+       hidePopup();
+     }
+   });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,651 @@
+<html class="scroll-smooth" lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   NusaAksara - Login
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+     font-family: 'Inter', sans-serif;
+     background-color: #f0fdfa; /* light green-blue background */
+     color: #064e3b; /* dark green text */
+   }
+   a, a:hover, a:focus {
+     outline-offset: 2px;
+   }
+   @keyframes bluePulse {
+     0%, 100% {
+       box-shadow: 0 0 8px 2px rgba(14, 165, 233, 0.6);
+     }
+     50% {
+       box-shadow: 0 0 20px 6px rgba(14, 165, 233, 0.9);
+     }
+   }
+   .blue-pulse {
+     animation: bluePulse 2.5s ease-in-out infinite;
+   }
+   .blue-effect {
+     box-shadow: 0 0 15px 4px rgba(14, 165, 233, 0.8);
+     transition: box-shadow 0.3s ease;
+   }
+   .blue-effect.pulse {
+     animation: bluePulse 1.5s ease-in-out 1;
+   }
+   a.feature-card {
+     transition: box-shadow 0.3s ease, transform 0.15s ease;
+     will-change: box-shadow, transform;
+     background-color: #e0f2fe; /* light blue background */
+     color: #064e3b;
+   }
+   a.feature-card:hover, a.feature-card:focus {
+     background-color: #bae6fd; /* brighter blue on hover/focus */
+     color: #064e3b;
+     box-shadow: 0 8px 20px -4px rgba(14, 165, 233, 0.5);
+   }
+   a.feature-card:active {
+     transform: scale(0.97);
+   }
+   header, footer {
+     background-color: #047857; /* dark green */
+     color: #d1fae5; /* light green text */
+   }
+   header a.text-blue-700, header a:hover, header a:focus {
+     color: #a7f3d0; /* lighter green */
+   }
+   h1, h2, h3 {
+     color: #065f46; /* medium dark green */
+   }
+   nav a:hover, nav a:focus {
+     color: #22c55e; /* bright green */
+   }
+   button, input, form button {
+     background-color: #22c55e; /* bright green */
+     color: white;
+     transition: background-color 0.3s ease;
+   }
+   button:hover, button:focus, form button:hover, form button:focus {
+     background-color: #16a34a; /* darker green */
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.5);
+   }
+   input {
+     border-color: #22c55e;
+   }
+   input:focus {
+     border-color: #16a34a;
+     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+     outline: none;
+   }
+   /* Scrollbar for chat messages */
+   #chat-messages::-webkit-scrollbar {
+     width: 8px;
+   }
+   #chat-messages::-webkit-scrollbar-thumb {
+     background-color: #22c55e;
+     border-radius: 4px;
+   }
+   #chat-messages::-webkit-scrollbar-track {
+     background-color: #d1fae5;
+   }
+  </style>
+ </head>
+ <body class="min-h-screen flex flex-col">
+  <!-- Login Page -->
+  <div id="login-page" class="flex-grow flex items-center justify-center bg-green-50 px-4">
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-8">
+    <h1 class="text-3xl font-semibold text-green-700 mb-6 text-center">Login NusaAksara</h1>
+    <form id="login-form" class="space-y-6" onsubmit="return handleLogin(event)">
+     <div>
+      <label for="username" class="block text-green-800 font-medium mb-1">Username</label>
+      <input id="username" name="username" type="text" required class="w-full border border-green-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" autocomplete="username"/>
+     </div>
+     <div>
+      <label for="password" class="block text-green-800 font-medium mb-1">Password</label>
+      <input id="password" name="password" type="password" required class="w-full border border-green-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" autocomplete="current-password"/>
+     </div>
+     <div>
+      <label for="role" class="block text-green-800 font-medium mb-1">Login sebagai</label>
+      <select id="role" name="role" required class="w-full border border-green-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+       <option value="" disabled selected>Pilih peran</option>
+       <option value="keluarga">Keluarga</option>
+       <option value="mahasiswa">Mahasiswa</option>
+      </select>
+     </div>
+     <button type="submit" class="w-full py-3 rounded-lg font-semibold hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 transition">
+      Masuk
+     </button>
+    </form>
+   </div>
+  </div>
+
+  <!-- Main App Content -->
+  <div id="app-content" class="hidden flex flex-col min-h-screen">
+   <header class="shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+     <div class="flex items-center space-x-3">
+      <a class="flex items-center space-x-3" href="#keluarga">
+       <img alt="Logo aplikasi literasi dengan huruf L berwarna biru dan hijau" class="w-10 h-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/4992050f-f2c1-4e64-e0dd-e6e447308fc6.jpg" width="40"/>
+       <h1 class="text-xl font-semibold text-green-400">
+   NusaAksara  
+       </h1>
+      </a>
+     </div>
+     <nav id="desktop-nav" class="hidden md:flex space-x-8 font-medium">
+      <!-- Navigation links inserted dynamically -->
+     </nav>
+     <button aria-label="Toggle menu" class="md:hidden text-green-300 hover:text-green-400 focus:outline-none focus:ring-2 focus:ring-green-400" id="mobile-menu-button">
+      <i class="fas fa-bars fa-lg"></i>
+     </button>
+    </div>
+    <nav aria-label="Mobile menu" class="md:hidden bg-green-700 border-t border-green-600 hidden" id="mobile-menu">
+     <!-- Mobile nav links inserted dynamically -->
+    </nav>
+   </header>
+   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16" id="main-sections">
+    <!-- Sections inserted dynamically -->
+   </main>
+   <footer class="border-t border-green-600 py-6 mt-16 text-center text-green-700 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     © 2025 NusaAksara. 
+    </div>
+   </footer>
+  </div>
+
+  <script>
+   // Elements
+   const loginPage = document.getElementById('login-page');
+   const appContent = document.getElementById('app-content');
+   const desktopNav = document.getElementById('desktop-nav');
+   const mobileMenu = document.getElementById('mobile-menu');
+   const mainSections = document.getElementById('main-sections');
+   const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+   // Mobile menu toggle
+   mobileMenuButton.addEventListener('click', () => {
+     mobileMenu.classList.toggle('hidden');
+   });
+
+   // Feature sections HTML strings
+   const sections = {
+     keluarga: `
+      <section class="bg-white rounded-lg shadow p-6 md:p-10" id="keluarga">
+       <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">
+        Fitur untuk Keluarga
+       </h2>
+       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <a aria-label="Badge Penghargaan" class="feature-card flex flex-col items-center text-center space-y-4 rounded-lg p-4 border border-green-300" href="badge.html" tabindex="0">
+         <img alt="Ilustrasi badge penghargaan berwarna emas dengan pita biru dan latar belakang keluarga bahagia membaca bersama" class="w-28 h-28" height="120" src="https://storage.googleapis.com/a1aa/image/fdfd3da4-4bb7-4dca-5e49-f0c035f0ac40.jpg" width="120"/>
+         <h3 class="text-xl font-semibold text-green-900">
+          Badge Penghargaan
+         </h3>
+         <p class="text-green-700">
+          Sistem badge untuk semua kalangan sebagai penghargaan atas pencapaian literasi.
+         </p>
+        </a>
+        <a aria-label="Sistem Poin Literasi" class="feature-card flex flex-col items-center text-center space-y-4 rounded-lg p-4 border border-green-300" href="poin.html" tabindex="0">
+         <img alt="Ilustrasi sistem poin literasi dengan ikon bintang dan grafik naik, latar belakang keluarga membaca buku bersama" class="w-28 h-28" height="120" src="https://storage.googleapis.com/a1aa/image/c00a7707-faed-408d-6173-43da82537c2a.jpg" width="120"/>
+         <h3 class="text-xl font-semibold text-green-900">
+          Sistem Poin Literasi
+         </h3>
+         <p class="text-green-700">
+          Kumpulkan poin dari aktivitas membaca dan berkontribusi dalam literasi keluarga.
+         </p>
+        </a>
+        <a aria-label="Fitur untuk Semua Kalangan" class="feature-card flex flex-col items-center text-center space-y-4 rounded-lg p-4 border border-green-300" href="literasi.html" tabindex="0">
+         <img alt="Ilustrasi keluarga terdiri dari ayah, ibu, dan dua anak membaca buku bersama di ruang tamu yang nyaman" class="w-28 h-28 rounded-lg object-cover" height="120" src="https://storage.googleapis.com/a1aa/image/42ecfb32-d26b-4e9e-6d50-85c254cc061c.jpg" width="120"/>
+         <h3 class="text-xl font-semibold text-green-900">
+          Fitur untuk Semua Kalangan
+         </h3>
+         <p class="text-green-700">
+          Fitur yang mudah digunakan dan cocok untuk semua anggota keluarga dari berbagai usia.
+         </p>
+        </a>
+       </div>
+      </section>
+     `,
+     mahasiswa: `
+      <section class="bg-white rounded-lg shadow p-6 md:p-10" id="mahasiswa">
+       <h2 class="text-3xl font-semibold text-green-700 mb-8 text-center">
+        Fitur untuk Mahasiswa
+       </h2>
+       <div class="space-y-10 max-w-4xl mx-auto">
+        <a aria-label="Ruang Baca Bareng" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="ruang baca.html" tabindex="0">
+         <img alt="Ilustrasi mahasiswa membaca cerita bersama dalam grup dengan diskusi real-time di layar laptop" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="ruang baca.jpg" width="140"/>
+         <div>
+          <h3 class="text-2xl font-semibold text-green-900 mb-1">
+           Ruang Baca Bareng
+          </h3>
+          <p class="text-green-700">
+           Baca cerita bersama dalam grup, dengan diskusi real-time dan jadwal baca.
+          </p>
+         </div>
+        </a>
+        <a aria-label="Kolaborasi Penulisan" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="kolaborasi-penulisan.html" tabindex="0">
+         <img alt="Ilustrasi dua mahasiswa menulis cerita bersama menggunakan laptop dengan sistem co-author" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="kolaborasi penulisan.jpg" width="140"/>
+         <div>
+          <h3 class="text-2xl font-semibold text-green-900 mb-1">
+           Kolaborasi Penulisan
+          </h3>
+          <p class="text-green-700">
+           Tulis cerita bersama teman atau komunitas, lengkap dengan sistem co-author.
+          </p>
+         </div>
+        </a>
+        <a aria-label="Tantangan Literasi" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="tantangan-literasi.html" tabindex="0">
+         <img alt="Ilustrasi mahasiswa mengerjakan tantangan literasi mingguan dengan checklist dan buku di meja" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="tantangan literais.jpg" width="140"/>
+         <div>
+          <h3 class="text-2xl font-semibold text-green-900 mb-1">
+           Tantangan Literasi
+          </h3>
+          <p class="text-green-700">
+           Misi mingguan seperti baca 3 cerita, buat ringkasan, atau ajak teman baca.
+          </p>
+         </div>
+        </a>
+        <a aria-label="Portofolio Literasi" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="portofolio-literasi.html" tabindex="0">
+         <img alt="Ilustrasi portofolio literasi mahasiswa dengan riwayat baca, kutipan favorit, dan karya tulis tersimpan" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="porto literasi.jpg" width="140"/>
+         <div>
+          <h3 class="text-2xl font-semibold text-green-900 mb-1">
+           Portofolio Literasi
+          </h3>
+          <p class="text-green-700">
+           Riwayat baca, kutipan favorit, dan karya tulis tersimpan sebagai bukti kontribusi literasi.
+          </p>
+         </div>
+        </a>
+        <a aria-label="Mentor Literasi" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="mentor-literasi.html" tabindex="0">
+         <img alt="Ilustrasi mahasiswa senior atau dosen membimbing mahasiswa dengan buku dan laptop" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="mentor.jpg" width="140"/>
+         <div>
+          <h3 class="text-2xl font-semibold text-green-900 mb-1">
+           Mentor Literasi
+          </h3>
+          <p class="text-green-700">
+           Mahasiswa senior atau dosen membimbing bacaan dan memberi masukan tulisan.
+          </p>
+         </div>
+        </a>
+        <a aria-label="Forum Kampus &amp; UKM" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="forum kampus.html" tabindex="0">
+         <img alt="Ilustrasi forum kampus dan UKM dengan mahasiswa berdiskusi dan promosi kegiatan literasi" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="kolaborasi.jpg" width="140"/>
+         <div>
+          <h3 class="text-2xl font-semibold text-green-900 mb-1">
+           Forum Kampus &amp; UKM
+          </h3>
+          <p class="text-green-700">
+           Ruang khusus mahasiswa satu kampus untuk diskusi, promosi, dan kolaborasi literasi.
+          </p>
+         </div>
+        </a>
+       </div>
+      </section>
+     `,
+     umum: `
+      <section class="bg-white rounded-lg shadow p-6 md:p-10" id="umum">
+       <h2 class="text-3xl font-semibold text-green-700 mb-8 text-center">
+        Fitur Umum untuk Semua
+       </h2>
+       <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        <a aria-label="Reward" class="feature-card flex flex-col items-center text-center space-y-4 p-6 border border-green-300 rounded-lg shadow-sm" href="reward.html" tabindex="0">
+         <img alt="Ilustrasi reward berupa medali emas dengan pita merah dan latar belakang pengguna aplikasi yang senang" class="w-28 h-28" height="120" src="reward.jpg" width="120"/>
+         <h3 class="text-xl font-semibold text-green-900">
+          Reward
+         </h3>
+         <p class="text-green-700">
+          Dapatkan reward menarik dari pencapaian literasi yang kamu raih.
+         </p>
+        </a>
+        <a aria-label="Leaderboard Keluarga" class="feature-card flex flex-col items-center text-center space-y-4 p-6 border border-green-300 rounded-lg shadow-sm" href="leader.html" tabindex="0">
+         <img alt="Ilustrasi papan peringkat leaderboard keluarga dengan ikon piala dan grafik naik" class="w-28 h-28" height="120" src="https://storage.googleapis.com/a1aa/image/03e73165-177e-47d9-45d2-168c5711aadc.jpg" width="120"/>
+         <h3 class="text-xl font-semibold text-green-900">
+          Leaderboard Keluarga
+         </h3>
+         <p class="text-green-700">
+          Papan peringkat khusus keluarga untuk memotivasi anggota dalam literasi.
+         </p>
+        </a>
+        <a aria-label="Leaderboard Mahasiswa" class="feature-card flex flex-col items-center text-center space-y-4 p-6 border border-green-300 rounded-lg shadow-sm" href="leaderboard-mahasiswa.html" tabindex="0">
+         <img alt="Ilustrasi papan peringkat leaderboard mahasiswa dengan ikon piala dan grafik naik" class="w-28 h-28" height="120" src="https://storage.googleapis.com/a1aa/image/f92eecab-31ce-4ae2-42c6-afbbe8426ddb.jpg" width="120"/>
+         <h3 class="text-xl font-semibold text-green-900">
+          Leaderboard Mahasiswa
+         </h3>
+         <p class="text-green-700">
+          Papan peringkat khusus mahasiswa untuk meningkatkan semangat literasi kampus.
+         </p>
+        </a>
+       </div>
+      </section>
+     `,
+     forumPaper: `
+      <section class="bg-white rounded-lg shadow p-6 md:p-10 max-w-5xl mx-auto" id="forum-paper">
+       <h2 class="text-3xl font-semibold text-green-700 mb-8 text-center">
+        🧾 Forum Paper &amp; Karya Tulis Ilmiah (Fitur Baru)
+       </h2>
+       <p class="text-green-800 max-w-3xl mx-auto mb-8 text-center text-lg">
+        Tempat berbagi, membaca, dan berdiskusi tentang esai, artikel ilmiah, dan karya tulis mahasiswa lain. Bisa juga digunakan untuk menulis paper secara kolaboratif.
+       </p>
+       <div class="space-y-8">
+        <a aria-label="Jelajahi Forum Paper dan Karya Tulis Ilmiah" class="feature-card block rounded-lg p-6 border border-green-300 hover:bg-green-50 focus:bg-green-50 focus:outline-none" href="paper.html" tabindex="0">
+         <h3 class="text-2xl font-semibold text-green-900 mb-2">
+          Jelajahi Forum Paper &amp; Karya Tulis Ilmiah
+         </h3>
+         <p class="text-green-700 max-w-prose">
+          Tempat berbagi, membaca, dan berdiskusi tentang esai, artikel ilmiah, dan karya tulis mahasiswa lain. Fitur ini juga mendukung penulisan paper secara kolaboratif untuk memudahkan kerja tim.
+         </p>
+         <button class="mt-4 px-5 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 transition" type="button">
+          Jelajahi Forum
+         </button>
+        </a>
+       </div>
+      </section>
+     `,
+     chatbot: `
+      <section class="bg-white rounded-lg shadow p-6 md:p-10 max-w-4xl mx-auto" id="chatbot">
+       <h2 class="text-3xl font-semibold text-green-700 mb-8 text-center">
+        Chatbot Literasi
+       </h2>
+       <div class="flex flex-col space-y-4">
+        <div class="flex items-center space-x-4">
+         <img alt="Ikon chatbot berwarna biru dengan wajah ramah dan gelembung chat" class="w-12 h-12 rounded-full blue-pulse" height="48" src="https://storage.googleapis.com/a1aa/image/b310fb9f-8695-40ae-0748-4090825d7bc2.jpg" width="48"/>
+         <div class="bg-blue-100 text-blue-900 p-4 rounded-lg max-w-prose blue-pulse" id="chatbot-response">
+          <p>
+           Halo! Saya Chatbot Literasi, siap membantu kamu menemukan cerita, menjawab pertanyaan, dan memberikan rekomendasi bacaan.
+          </p>
+         </div>
+        </div>
+        <form id="chatbot-form" class="flex space-x-3" method="get" onsubmit="return handleChat(event)">
+         <input aria-label="Input pesan chatbot" class="flex-grow border border-green-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" id="chatbot-input" name="query" placeholder="Tulis pesan kamu..." required="" type="text"/>
+         <button aria-label="Kirim pesan chatbot" class="bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400" type="submit">
+          Kirim
+         </button>
+        </form>
+        <div aria-atomic="true" aria-live="polite" class="mt-4 max-h-64 overflow-y-auto space-y-3 border border-green-300 rounded-lg p-4 bg-green-50" id="chat-messages">
+         <div class="flex items-start space-x-3">
+          <img alt="Avatar pengguna aplikasi literasi dengan ekspresi antusias" class="w-10 h-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/e1e91528-4b41-4fe9-b51d-d3d431cb4dce.jpg" width="40"/>
+          <div class="bg-white p-3 rounded-lg shadow max-w-xs">
+           <p class="text-green-900">
+            Apa rekomendasi buku untuk pemula dalam literasi digital?
+           </p>
+          </div>
+         </div>
+         <div class="flex items-start space-x-3 justify-end">
+          <div class="bg-green-600 text-white p-3 rounded-lg shadow max-w-xs">
+           <p>
+            Saya merekomendasikan "Literasi Digital untuk Semua" yang mudah dipahami dan sangat informatif.
+           </p>
+          </div>
+          <img alt="Ikon chatbot berwarna biru dengan wajah ramah" class="w-10 h-10 rounded-full blue-pulse" height="40" src="https://storage.googleapis.com/a1aa/image/b310fb9f-8695-40ae-0748-4090825d7bc2.jpg" width="40"/>
+         </div>
+         <div class="flex items-start space-x-3">
+          <img alt="Avatar pengguna aplikasi literasi dengan ekspresi antusias" class="w-10 h-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/e1e91528-4b41-4fe9-b51d-d3d431cb4dce.jpg" width="40"/>
+          <div class="bg-white p-3 rounded-lg shadow max-w-xs">
+           <p class="text-green-900">
+            Bagaimana cara bergabung dengan komunitas literasi di kampus?
+           </p>
+          </div>
+         </div>
+         <div class="flex items-start space-x-3 justify-end">
+          <div class="bg-green-600 text-white p-3 rounded-lg shadow max-w-xs">
+           <p>
+            Kamu bisa mengunjungi fitur Forum Kampus &amp; UKM di aplikasi dan mendaftar melalui halaman komunitas.
+           </p>
+          </div>
+          <img alt="Ikon chatbot berwarna biru dengan wajah ramah" class="w-10 h-10 rounded-full blue-pulse" height="40" src="https://storage.googleapis.com/a1aa/image/b310fb9f-8695-40ae-0748-4090825d7bc2.jpg" width="40"/>
+         </div>
+        </div>
+       </div>
+      </section>
+     `,
+     penjelasanFitur: `
+      <section class="bg-white rounded-lg shadow p-6 md:p-10 max-w-7xl mx-auto" id="penjelasan-fitur">
+       <h2 class="text-3xl font-semibold text-green-700 mb-8 text-center">
+        Penjelasan Semua Fitur Literasi App
+       </h2>
+       <div class="space-y-8 max-w-5xl mx-auto text-green-800">
+        <article>
+         <h3 class="text-2xl font-semibold mb-2">Fitur untuk Keluarga</h3>
+         <p class="mb-2">
+          Fitur ini dirancang untuk mendukung literasi di lingkungan keluarga dengan sistem badge penghargaan, pengumpulan poin literasi, dan fitur yang mudah digunakan untuk semua anggota keluarga dari berbagai usia. Anggota keluarga dapat membaca bersama dan saling memotivasi.
+         </p>
+        </article>
+        <article>
+         <h3 class="text-2xl font-semibold mb-2">Fitur untuk Mahasiswa</h3>
+         <p class="mb-2">
+          Menyediakan ruang baca bersama dengan diskusi real-time, kolaborasi penulisan cerita, tantangan literasi mingguan, portofolio literasi untuk menyimpan karya dan kutipan favorit, mentor literasi untuk bimbingan, serta forum kampus dan UKM untuk diskusi dan promosi kegiatan literasi.
+         </p>
+        </article>
+        <article>
+         <h3 class="text-2xl font-semibold mb-2">Fitur Umum untuk Semua</h3>
+         <p class="mb-2">
+          Termasuk reward menarik untuk pencapaian literasi, leaderboard khusus keluarga dan mahasiswa untuk memotivasi dan meningkatkan semangat literasi, serta fitur yang dapat diakses oleh semua pengguna tanpa batasan usia atau latar belakang.
+         </p>
+        </article>
+        <article>
+         <h3 class="text-2xl font-semibold mb-2">Forum Paper &amp; Karya Tulis Ilmiah</h3>
+         <p class="mb-2">
+          Tempat berbagi, membaca, dan berdiskusi tentang esai, artikel ilmiah, dan karya tulis mahasiswa lain. Fitur ini juga mendukung penulisan paper secara kolaboratif untuk memudahkan kerja tim dan meningkatkan kualitas karya tulis ilmiah.
+         </p>
+        </article>
+        <article>
+         <h3 class="text-2xl font-semibold mb-2">Chatbot Literasi</h3>
+         <p class="mb-2">
+          Chatbot interaktif yang siap membantu menjawab pertanyaan seputar literasi sesuai usia dan fitur Aksarasa, memberikan rekomendasi bacaan, serta membantu pengguna memahami dan memanfaatkan fitur-fitur dalam aplikasi dengan mudah.
+         </p>
+        </article>
+        <article>
+         <h3 class="text-2xl font-semibold mb-2">Fitur Aksarasa</h3>
+         <p class="mb-2">
+          Aksarasa adalah fitur khusus yang menyediakan akses ke berbagai sumber literasi digital secara interaktif, termasuk membaca, mendengarkan, dan berdiskusi. Fitur ini memudahkan pengguna untuk memperkaya pengalaman literasi digital mereka.
+         </p>
+        </article>
+       </div>
+      </section>
+     `
+   };
+
+   // Navigation links for roles
+   const navLinks = {
+     keluarga: [
+       { href: '#keluarga', label: 'Keluarga' },
+       { href: '#umum', label: 'Fitur Umum' },
+       { href: '#chatbot', label: 'Chatbot' },
+       { href: '#forum-paper', label: '🧾 Forum Paper & Karya Tulis Ilmiah' }
+     ],
+     mahasiswa: [
+       { href: '#mahasiswa', label: 'Mahasiswa' },
+       { href: '#umum', label: 'Fitur Umum' },
+       { href: '#chatbot', label: 'Chatbot' },
+       { href: '#forum-paper', label: '🧾 Forum Paper & Karya Tulis Ilmiah' }
+     ]
+   };
+
+   // Sections to show per role
+   const roleSections = {
+     keluarga: ['keluarga', 'umum', 'forumPaper', 'chatbot', 'penjelasanFitur'],
+     mahasiswa: ['mahasiswa', 'umum', 'forumPaper', 'chatbot', 'penjelasanFitur']
+   };
+
+   // Render navigation links
+   function renderNav(role) {
+     desktopNav.innerHTML = '';
+     mobileMenu.innerHTML = '';
+     navLinks[role].forEach(link => {
+       const aDesktop = document.createElement('a');
+       aDesktop.href = link.href;
+       aDesktop.textContent = link.label;
+       aDesktop.className = 'hover:text-green-400 transition';
+       desktopNav.appendChild(aDesktop);
+
+       const aMobile = document.createElement('a');
+       aMobile.href = link.href;
+       aMobile.textContent = link.label;
+       aMobile.className = 'block px-4 py-3 border-b border-green-600 hover:bg-green-600 hover:text-green-100';
+       mobileMenu.appendChild(aMobile);
+     });
+   }
+
+   // Render sections based on role
+   function renderSections(role) {
+     mainSections.innerHTML = '';
+     roleSections[role].forEach(sectionKey => {
+       mainSections.insertAdjacentHTML('beforeend', sections[sectionKey]);
+     });
+     addFeatureCardEffects();
+     addChatbotLogic();
+   }
+
+   // Add blue pulse effect on click for all feature cards
+   function addFeatureCardEffects() {
+     const featureCards = document.querySelectorAll('a.feature-card');
+     featureCards.forEach(card => {
+       card.addEventListener('mousedown', () => {
+         card.classList.add('blue-effect', 'pulse');
+       });
+       card.addEventListener('mouseup', () => {
+         setTimeout(() => {
+           card.classList.remove('pulse');
+         }, 1500);
+       });
+       card.addEventListener('mouseleave', () => {
+         card.classList.remove('blue-effect', 'pulse');
+       });
+     });
+   }
+
+   // Chatbot logic
+   function addChatbotLogic() {
+     const chatMessages = document.getElementById('chat-messages');
+     const chatbotResponse = document.getElementById('chatbot-response');
+     const chatbotInput = document.getElementById('chatbot-input');
+     const chatbotForm = document.getElementById('chatbot-form');
+
+     if (!chatbotForm) return;
+
+     chatbotForm.onsubmit = function(event) {
+       event.preventDefault();
+       const userInput = chatbotInput.value.trim();
+       if (!userInput) return false;
+
+       appendMessage(true, userInput);
+       chatbotInput.value = '';
+       chatbotInput.disabled = true;
+
+       setTimeout(() => {
+         const response = generateResponse(userInput);
+         appendMessage(false, response);
+         chatbotInput.disabled = false;
+         chatbotInput.focus();
+       }, 800);
+
+       return false;
+     };
+
+     function appendMessage(isUser, text) {
+       const container = document.createElement('div');
+       container.classList.add('flex', 'items-start', 'space-x-3');
+       if (!isUser) container.classList.add('justify-end');
+
+       const img = document.createElement('img');
+       img.classList.add('w-10', 'h-10', 'rounded-full');
+       img.height = 40;
+       img.width = 40;
+
+       const messageBox = document.createElement('div');
+       messageBox.classList.add('p-3', 'rounded-lg', 'shadow', 'max-w-xs');
+       const p = document.createElement('p');
+       p.textContent = text;
+
+       if (isUser) {
+         img.src = 'https://storage.googleapis.com/a1aa/image/e1e91528-4b41-4fe9-b51d-d3d431cb4dce.jpg';
+         p.classList.add('text-green-900');
+         messageBox.classList.add('bg-white');
+       } else {
+         img.src = 'https://storage.googleapis.com/a1aa/image/b310fb9f-8695-40ae-0748-4090825d7bc2.jpg';
+         p.classList.add('text-white');
+         messageBox.classList.add('bg-green-600', 'text-white');
+         img.classList.add('blue-pulse');
+       }
+
+       messageBox.appendChild(p);
+       if (isUser) {
+         container.appendChild(img);
+         container.appendChild(messageBox);
+       } else {
+         container.appendChild(messageBox);
+         container.appendChild(img);
+       }
+       chatMessages.appendChild(container);
+       chatMessages.scrollTop = chatMessages.scrollHeight;
+     }
+
+     function generateResponse(input) {
+       const text = input.toLowerCase();
+
+       // Keywords for age-based literacy questions
+       const ageKeywords = ['anak', 'remaja', 'dewasa', 'usia', 'umur', 'anak-anak', 'anak kecil', 'anak muda', 'mahasiswa', 'pelajar'];
+
+       // Keywords for Aksarasa feature questions
+       const aksarasaKeywords = ['aksarasa', 'fitur aksarasa', 'cara menggunakan aksarasa', 'apa itu aksarasa', 'aksarasa literasi', 'aksarasa app'];
+
+       // Check for age-related questions
+       for (const keyword of ageKeywords) {
+         if (text.includes(keyword)) {
+           return "Untuk literasi sesuai usia, kami menyediakan berbagai materi yang disesuaikan mulai dari anak-anak, remaja, hingga dewasa. Kamu bisa memilih fitur yang sesuai dengan kelompok usia kamu di aplikasi.";
+         }
+       }
+
+       // Check for Aksarasa feature questions
+       for (const keyword of aksarasaKeywords) {
+         if (text.includes(keyword)) {
+           return "Fitur Aksarasa adalah layanan khusus dalam aplikasi kami yang membantu kamu mengakses berbagai sumber literasi digital dengan mudah dan interaktif. Kamu bisa menggunakan Aksarasa untuk membaca, mendengarkan, dan berdiskusi tentang berbagai materi literasi.";
+         }
+       }
+
+       // General literacy questions
+       if (text.includes('literasi')) {
+         return "Literasi adalah kemampuan membaca, menulis, dan memahami informasi. Aplikasi ini membantu kamu meningkatkan literasi melalui berbagai fitur menarik sesuai kebutuhan.";
+       }
+
+       // Greetings
+       if (/(halo|hai|hello|selamat pagi|selamat siang|selamat sore|selamat malam)/.test(text)) {
+         return "Halo! Ada yang bisa saya bantu seputar literasi atau fitur aplikasi?";
+       }
+
+       // Default fallback
+       return "Maaf, saya belum mengerti pertanyaan kamu. Silakan tanyakan seputar literasi sesuai usia atau fitur Aksarasa, saya siap membantu!";
+     }
+   }
+
+   // Handle login form submission
+   function handleLogin(event) {
+     event.preventDefault();
+     const username = document.getElementById('username').value.trim();
+     const password = document.getElementById('password').value.trim();
+     const role = document.getElementById('role').value;
+
+     if (!username || !password || !role) {
+       alert('Mohon isi semua kolom dan pilih peran.');
+       return false;
+     }
+
+     // For demo, accept any username/password, just role matters
+     // In real app, validate credentials here
+
+     // Hide login page, show app content
+     loginPage.classList.add('hidden');
+     appContent.classList.remove('hidden');
+
+     // Render nav and sections based on role
+     renderNav(role);
+     renderSections(role);
+
+     // Scroll to top
+     window.scrollTo(0, 0);
+
+     return false;
+   }
+  </script>
+ </body>
+</html>
