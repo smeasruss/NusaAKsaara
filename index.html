@@ -135,18 +135,15 @@
       </a>
      </div>
      <nav id="desktop-nav" class="hidden md:flex space-x-8 font-medium">
-      <!-- Navigation links inserted dynamically -->
      </nav>
      <button aria-label="Toggle menu" class="md:hidden text-green-300 hover:text-green-400 focus:outline-none focus:ring-2 focus:ring-green-400" id="mobile-menu-button">
       <i class="fas fa-bars fa-lg"></i>
      </button>
     </div>
     <nav aria-label="Mobile menu" class="md:hidden bg-green-700 border-t border-green-600 hidden" id="mobile-menu">
-     <!-- Mobile nav links inserted dynamically -->
     </nav>
    </header>
    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16" id="main-sections">
-    <!-- Sections inserted dynamically -->
    </main>
    <footer class="border-t border-green-600 py-6 mt-16 text-center text-green-700 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -224,7 +221,7 @@
           </p>
          </div>
         </a>
-        <a aria-label="Kolaborasi Penulisan" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="kolaborasi-penulisan.html" tabindex="0">
+        <a aria-label="Kolaborasi Penulisan" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="kolaborasi nulis.html" tabindex="0">
          <img alt="Ilustrasi dua mahasiswa menulis cerita bersama menggunakan laptop dengan sistem co-author" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="kolaborasi penulisan.jpg" width="140"/>
          <div>
           <h3 class="text-2xl font-semibold text-green-900 mb-1">
@@ -235,7 +232,7 @@
           </p>
          </div>
         </a>
-        <a aria-label="Tantangan Literasi" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="tantangan-literasi.html" tabindex="0">
+        <a aria-label="Tantangan Literasi" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="tantangan literasi.html" tabindex="0">
          <img alt="Ilustrasi mahasiswa mengerjakan tantangan literasi mingguan dengan checklist dan buku di meja" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="tantangan literais.jpg" width="140"/>
          <div>
           <h3 class="text-2xl font-semibold text-green-900 mb-1">
@@ -246,7 +243,7 @@
           </p>
          </div>
         </a>
-        <a aria-label="Portofolio Literasi" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="portofolio-literasi.html" tabindex="0">
+        <a aria-label="Portofolio Literasi" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="portobindex="0">
          <img alt="Ilustrasi portofolio literasi mahasiswa dengan riwayat baca, kutipan favorit, dan karya tulis tersimpan" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="porto literasi.jpg" width="140"/>
          <div>
           <h3 class="text-2xl font-semibold text-green-900 mb-1">
@@ -268,7 +265,7 @@
           </p>
          </div>
         </a>
-        <a aria-label="Forum Kampus &amp; UKM" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="forum kampus.html" tabindex="0">
+        <a aria-label="Forum Kampus &amp; UKM" class="feature-card flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6 rounded-lg p-4 border border-green-300" href="Forum kampus.html" tabindex="0">
          <img alt="Ilustrasi forum kampus dan UKM dengan mahasiswa berdiskusi dan promosi kegiatan literasi" class="w-36 h-36 rounded-lg object-cover flex-shrink-0" height="140" src="kolaborasi.jpg" width="140"/>
          <div>
           <h3 class="text-2xl font-semibold text-green-900 mb-1">
@@ -306,7 +303,7 @@
           Papan peringkat khusus keluarga untuk memotivasi anggota dalam literasi.
          </p>
         </a>
-        <a aria-label="Leaderboard Mahasiswa" class="feature-card flex flex-col items-center text-center space-y-4 p-6 border border-green-300 rounded-lg shadow-sm" href="leaderboard-mahasiswa.html" tabindex="0">
+        <a aria-label="Leaderboard Mahasiswa" class="feature-card flex flex-col items-center text-center space-y-4 p-6 border border-green-300 rounded-lg shadow-sm" href="leader mahasigma.html" tabindex="0">
          <img alt="Ilustrasi papan peringkat leaderboard mahasiswa dengan ikon piala dan grafik naik" class="w-28 h-28" height="120" src="https://storage.googleapis.com/a1aa/image/f92eecab-31ce-4ae2-42c6-afbbe8426ddb.jpg" width="120"/>
          <h3 class="text-xl font-semibold text-green-900">
           Leaderboard Mahasiswa
@@ -633,6 +630,10 @@
      // For demo, accept any username/password, just role matters
      // In real app, validate credentials here
 
+     // Save login state and role in localStorage
+     localStorage.setItem('nusaAksaraLoggedIn', 'true');
+     localStorage.setItem('nusaAksaraRole', role);
+
      // Hide login page, show app content
      loginPage.classList.add('hidden');
      appContent.classList.remove('hidden');
@@ -646,7 +647,22 @@
 
      return false;
    }
+
+   // On page load, check if user is already logged in
+   window.addEventListener('DOMContentLoaded', () => {
+     const loggedIn = localStorage.getItem('nusaAksaraLoggedIn');
+     const role = localStorage.getItem('nusaAksaraRole');
+
+     if (loggedIn === 'true' && (role === 'keluarga' || role === 'mahasiswa')) {
+       // Hide login page, show app content
+       loginPage.classList.add('hidden');
+       appContent.classList.remove('hidden');
+
+       // Render nav and sections based on role
+       renderNav(role);
+       renderSections(role);
+     }
+   });
   </script>
  </body>
-
 </html>
